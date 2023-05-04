@@ -194,12 +194,12 @@ const rule = reactive({
     trigger: ['input', 'blur'],
   }],
   optionC: [{
-    required: true,
+    required: false,
     message: '',
     trigger: ['input', 'blur'],
   }],
   optionD: [{
-    required: true,
+    required: false,
     message: '',
     trigger: ['input', 'blur'],
   }],
