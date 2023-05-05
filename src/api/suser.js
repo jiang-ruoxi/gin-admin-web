@@ -24,9 +24,9 @@ export const createUser = (data) => {
 // @Param data body model.User true "删除User"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
 // @Router /user/deleteUser [delete]
-export const deleteUser = (data) => {
+export const deleteSUser = (data) => {
   return service({
-    url: '/user/deleteUser',
+    url: '/user/deleteSUser',
     method: 'delete',
     data
   })

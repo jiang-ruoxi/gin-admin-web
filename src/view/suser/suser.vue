@@ -28,18 +28,19 @@
         <el-table-column type="selection" width="55"/>
         <el-table-column align="left" label="编号" prop="id" width="100"/>
         <el-table-column align="left" label="OpenId" prop="openId" width="300"/>
-        <el-table-column align="left" label="用户昵称" prop="nickName" width="200"/>
-        <el-table-column prop="headUrl" label="用户头像" min-width="300">
+        <el-table-column align="left" label="用户昵称" prop="nickName" width="150"/>
+        <el-table-column prop="headUrl" label="用户头像" min-width="200">
           <template #default="scope">
             <img :src="scope.row.headUrl" min-width="80" height="80"/>
           </template>
         </el-table-column>
-        <el-table-column align="left" label="所属地区" prop="area" width="200"/>
+        <el-table-column align="left" label="所属地区" prop="area" width="150"/>
         <el-table-column align="left" label="注册时间" prop="addTime" width="200"/>
-        <el-table-column align="left" label="操作">
+        <el-table-column align="left" label="操作" width="300">
           <template #default="scope">
             <el-button type="primary" link icon="edit" class="table-button" @click="updateUserFunc(scope.row)">修改
             </el-button>
+            <el-button type="primary" link icon="delete" @click="deleteRow(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -90,6 +91,7 @@ export default {
 import {
   getUserList,
   findUser,
+  deleteSUser,
   createUser,
   updateUser,
 } from '@/api/suser'
@@ -172,6 +174,31 @@ const updateUserFunc = async (row) => {
   }
 }
 
+// 删除行
+const deleteRow = (row) => {
+  ElMessageBox.confirm('确定要删除吗?', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    deleteUserFunc(row)
+  })
+}
+
+// 删除行
+const deleteUserFunc = async (row) => {
+  const res = await deleteSUser({id: row.id})
+  if (res.code === 0) {
+    ElMessage({
+      type: 'success',
+      message: '删除成功'
+    })
+    if (tableData.value.length === 1 && page.value > 1) {
+      page.value--
+    }
+    getTableData()
+  }
+}
 
 // 弹窗控制标记
 const dialogFormVisible = ref(false)
