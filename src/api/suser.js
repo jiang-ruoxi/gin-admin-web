@@ -73,6 +73,7 @@ export const updateUser = (data) => {
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"查询成功"}"
 // @Router /user/findUser [get]
 export const findUser = (params) => {
+  console.log(params)
   return service({
     url: '/user/findUser',
     method: 'get',
