@@ -47,7 +47,7 @@
         <el-table-column align="center" label="类型" prop="category" width="100">
           <template #default="scope">
             <el-tag
-                :type="scope.row.category === '政治' ? 'success' : scope.row.category === '哲学' ? '' : scope.row.category === '历史' ? 'warning' : scope.row.category === '地理' ? 'danger' : 'info'"
+                :type="scope.row.category === '政治历史' ? 'success' : scope.row.category === '经济哲学' ? '' : scope.row.category === '法律公文' ? 'warning' : scope.row.category === '管理学' ? 'danger' : scope.row.category === '人文科技' ? 'success' : scope.row.category === '常识' ? 'warning' :'info'"
                 type="success"
             >{{ scope.row.category }}
             </el-tag>
