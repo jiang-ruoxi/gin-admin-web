@@ -11,6 +11,9 @@
         <el-form-item label="问题">
           <el-input v-model="searchInfo.question" placeholder="搜索条件"/>
         </el-form-item>
+        <el-form-item label="解析">
+          <el-input v-model="searchInfo.analytic" placeholder="搜索条件"/>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" icon="search" @click="onSubmit">查询</el-button>
           <el-button icon="refresh" @click="onReset">重置</el-button>
